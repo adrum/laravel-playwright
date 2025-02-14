@@ -9,7 +9,9 @@ class PlaywrightServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        if ($this->app->environment('production')) {
+        $this->mergeConfigFrom(__DIR__ . '/config/playwright.php', 'playwright');
+
+        if ($this->app->environment('production') || !config('playwright.enabled')) {
             return;
         }
 
@@ -17,7 +19,8 @@ class PlaywrightServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/routes/playwright.php' => base_path('routes/playwright.php'),
+                __DIR__ . '/routes/playwright.php' => base_path('routes/playwright.php'),
+                __DIR__ . '/config/playwright.php' => base_path('config/playwright.php'),
             ]);
 
             $this->commands([
