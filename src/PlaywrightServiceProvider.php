@@ -11,12 +11,6 @@ class PlaywrightServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/config/playwright.php', 'playwright');
 
-        if ($this->app->environment('production') || !config('playwright.enabled')) {
-            return;
-        }
-
-        $this->addRoutes();
-
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/routes/playwright.php' => base_path('routes/playwright.php'),
@@ -27,12 +21,18 @@ class PlaywrightServiceProvider extends ServiceProvider
                 PlaywrightBoilerplateCommand::class,
             ]);
         }
+        
+        if ($this->app->environment('production') || !config('playwright.enabled')) {
+            return;
+        }
+
+        $this->addRoutes();
     }
 
     protected function addRoutes()
     {
         Route::namespace('')
             ->middleware('web')
-            ->group(__DIR__.'/routes/playwright.php');
+            ->group(__DIR__ . '/routes/playwright.php');
     }
 }
