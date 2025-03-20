@@ -1,5 +1,5 @@
 {
-    "name": "web-id/laravel-playwright",
+    "name": "adrum/laravel-playwright",
     "description": "Laravel Playwright Boilerplate",
     "keywords": [
         "laravel",
@@ -8,13 +8,7 @@
     ],
     "type": "library",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Yoann Frommelt",
-            "email": "yoann@web-id.fr"
-        }
-    ],
-    "homepage": "https://github.com/web-id-fr/laravel-playwright",
+    "homepage": "https://github.com/adrum/laravel-playwright",
     "autoload": {
         "psr-4": {
             "WebId\\LaravelPlaywright\\": "src/"
