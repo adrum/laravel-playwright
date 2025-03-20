@@ -9,27 +9,30 @@ class PlaywrightServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        if ($this->app->environment('production')) {
-            return;
-        }
-
-        $this->addRoutes();
+        $this->mergeConfigFrom(__DIR__ . '/config/playwright.php', 'playwright');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/routes/playwright.php' => base_path('routes/playwright.php'),
+                __DIR__ . '/routes/playwright.php' => base_path('routes/playwright.php'),
+                __DIR__ . '/config/playwright.php' => base_path('config/playwright.php'),
             ]);
 
             $this->commands([
                 PlaywrightBoilerplateCommand::class,
             ]);
         }
+        
+        if ($this->app->environment('production') || !config('playwright.enabled')) {
+            return;
+        }
+
+        $this->addRoutes();
     }
 
     protected function addRoutes()
     {
         Route::namespace('')
             ->middleware('web')
-            ->group(__DIR__.'/routes/playwright.php');
+            ->group(__DIR__ . '/routes/playwright.php');
     }
 }
