@@ -16,16 +16,10 @@ Now you're ready to install this package through Composer. Pull it in as a devel
 composer require web-id/laravel-playwright --dev
 ```
 
-Next, run the `playwright:boilerplate` command to copy over the initial boilerplate files for your Playwright tests.
+Finally, run the `playwright:boilerplate` command to copy over the initial boilerplate files for your Playwright tests.
 
 ```bash
 php artisan playwright:boilerplate
-```
-
-Finally, enable the package in your `.env` file.
-
-```bash
-PLAYWRIGHT_ENABLED=true
 ```
 
 That's it! You're ready to go. We've provided an `laravel-examples.spec.ts` spec for you to play around with it. Let's run it now:

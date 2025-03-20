@@ -21,8 +21,14 @@ class PlaywrightServiceProvider extends ServiceProvider
                 PlaywrightBoilerplateCommand::class,
             ]);
         }
-        
-        if ($this->app->environment('production') || !config('playwright.enabled')) {
+
+        if (
+            $this->app->environment("production") ||
+            !in_array(
+                $this->app->environment(),
+                config("playwright.allowed_environments")
+            )
+        ) {
             return;
         }
 

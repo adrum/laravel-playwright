@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'enabled' => env('PLAYWRIGHT_ENABLED', false),
+    "allowed_environments" => ["local", "testing", "playwright"],
 ];
