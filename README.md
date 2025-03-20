@@ -13,7 +13,7 @@ yarn create playwright
 Now you're ready to install this package through Composer. Pull it in as a development-only dependency.
 
 ```bash
-composer require web-id/laravel-playwright --dev
+composer require adrum/laravel-playwright --dev
 ```
 
 Next, run the `playwright:boilerplate` command to copy over the initial boilerplate files for your Playwright tests.
